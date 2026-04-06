@@ -1,0 +1,20 @@
+C:\Users\Qwzix\source\repos\agent_test1\obj\Debug\agent_test1.csproj.AssemblyReference.cache
+C:\Users\Qwzix\source\repos\agent_test1\obj\Debug\agent_test1.csproj.CoreCompileInputs.cache
+C:\Users\Qwzix\source\repos\agent_test1\bin\Debug\agent_test1.exe.config
+C:\Users\Qwzix\source\repos\agent_test1\bin\Debug\agent_test1.exe
+C:\Users\Qwzix\source\repos\agent_test1\bin\Debug\agent_test1.pdb
+C:\Users\Qwzix\source\repos\agent_test1\bin\Debug\System.CodeDom.dll
+C:\Users\Qwzix\source\repos\agent_test1\bin\Debug\System.CodeDom.xml
+C:\Users\Qwzix\source\repos\agent_test1\obj\Debug\agent_test1.csproj.CopyComplete
+C:\Users\Qwzix\source\repos\agent_test1\obj\Debug\agent_test1.exe
+C:\Users\Qwzix\source\repos\agent_test1\obj\Debug\agent_test1.pdb
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\bin\Debug\agent_test1.exe.config
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\bin\Debug\agent_test1.exe
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\bin\Debug\agent_test1.pdb
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\bin\Debug\System.CodeDom.dll
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\bin\Debug\System.CodeDom.xml
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.csproj.AssemblyReference.cache
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.csproj.CoreCompileInputs.cache
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.csproj.CopyComplete
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.exe
+D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.pdb

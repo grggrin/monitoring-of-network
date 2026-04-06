@@ -1,0 +1,64 @@
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\e_sqlite3.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\server_prototype.exe.config
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\server_prototype.exe
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\server_prototype.pdb
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\Microsoft.Data.Sqlite.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.core.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Buffers.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Data.SQLite.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Memory.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Numerics.Vectors.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\Microsoft.Data.Sqlite.xml
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Buffers.xml
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Memory.xml
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Numerics.Vectors.xml
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.AssemblyReference.cache
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form1.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_addAgents.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_addAuthorised.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_Ignored.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Properties.Resources.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.GenerateResource.cache
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.CoreCompileInputs.cache
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_p.F099C557.Up2Date
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.exe
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.pdb
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\e_sqlite3.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\server_prototype.exe.config
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\server_prototype.exe
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\server_prototype.pdb
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\Microsoft.Data.Sqlite.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.core.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Buffers.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Data.SQLite.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Memory.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Numerics.Vectors.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\Microsoft.Data.Sqlite.xml
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Buffers.xml
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Memory.xml
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Numerics.Vectors.xml
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.AssemblyReference.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form1.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_addAgents.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_addAuthorised.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_Ignored.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Properties.Resources.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.GenerateResource.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.CoreCompileInputs.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.csproj.CopyComplete
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.exe
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.pdb
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_agentLog.resources
+C:\Users\Qwzix\Desktop\Studying\Дип\Сервер\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_monitoring.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_agentLog.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_monitoring.resources

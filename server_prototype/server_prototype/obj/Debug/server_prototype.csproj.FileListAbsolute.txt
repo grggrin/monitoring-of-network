@@ -1,0 +1,11 @@
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\Debug\server_prototype.exe.config
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\Debug\server_prototype.exe
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\bin\Debug\server_prototype.pdb
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.csproj.AssemblyReference.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.Form1.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.Form_addAgents.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.Properties.Resources.resources
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.csproj.GenerateResource.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.csproj.CoreCompileInputs.cache
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.exe
+D:\Desktop\dip\для сервера\server_prototype\server_prototype\obj\Debug\server_prototype.pdb

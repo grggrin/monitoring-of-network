@@ -1,0 +1,181 @@
+===== SYSTEM INFORMATION =====
+Time: 04.04.2026 12:02:21
+
+HARDWARE:
+CPU: AMD Ryzen 5 5600G with Radeon Graphics          (6 cores)
+RAM: 31,37 GB
+
+DISKS:
+C:\ 953 GB
+D:\ 930 GB
+
+CPU Load: 1,17 %
+RAM Usage: 42,04 %
+Network Usage: 0 %
+
+DISK USAGE:
+C:\ Used: 355GB / 953GB (37,25%)
+D:\ Used: 354GB / 930GB (38,06%)
+
+INSTALLED PROGRAMS:
+3DMark
+Adobe Refresh Manager
+Advanced Encryption Package
+Battle.net
+Battlefield 2042
+ClickOnce Bootstrapper Package for Microsoft .NET Framework
+EA app
+Entity Framework 6.2.0 Tools  for Visual Studio 2022
+Epic Games Launcher
+Futuremark SystemInfo
+Hearthstone
+Hotspot Shield 12.9.0
+icecap_collection_neutral
+icecap_collectionresources
+icecap_collectionresourcesx64
+IntelliTraceProfilerProxy
+Java Auto Updater
+Kaspersky Internet Security
+Kits Configuration Installer
+Launcher Prerequisites (x64)
+MEGAsync
+Microsoft .NET Framework 4.7.2 Targeting Pack
+Microsoft .NET Framework 4.8 SDK
+Microsoft .NET Framework 4.8 Targeting Pack
+Microsoft .NET Host - 8.0.1 (x86)
+Microsoft .NET Host FX Resolver - 8.0.1 (x86)
+Microsoft .NET Runtime - 6.0.22 (x64)
+Microsoft .NET Runtime - 8.0.1 (x86)
+Microsoft .NET Targeting Pack - 8.0.1 (x86)
+Microsoft ASP.NET Core 6.0.22 - Shared Framework (x64)
+Microsoft ASP.NET Core 8.0.1 Shared Framework (x86)
+Microsoft ASP.NET Core 8.0.1 Targeting Pack (x86)
+Microsoft Edge
+Microsoft NetStandard SDK
+Microsoft TestPlatform SDK Local Feed
+Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161
+Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219
+Microsoft Visual C++ 2012 Redistributable (x64) - 11.0.61030
+Microsoft Visual C++ 2012 Redistributable (x86) - 11.0.61030
+Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.61030
+Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.61030
+Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.30501
+Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501
+Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005
+Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005
+Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.44.35211
+Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.44.35211
+Microsoft Visual C++ 2022 X86 Additional Runtime - 14.44.35211
+Microsoft Visual C++ 2022 X86 Debug Runtime - 14.38.33135
+Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.44.35211
+Microsoft Visual Studio Setup Configuration
+Microsoft Visual Studio Setup WMI Provider
+Microsoft Windows Desktop Runtime - 3.1.8 (x64)
+Microsoft Windows Desktop Runtime - 6.0.22 (x64)
+Microsoft Windows Desktop Runtime - 8.0.1 (x86)
+Microsoft Windows Desktop Targeting Pack - 8.0.1 (x86)
+Microsoft XNA Framework Redistributable 4.0
+MSI Development Tools
+osu!
+Overwolf
+Phantom Gaming Tuning v3.0.466
+Proteus 8 Professional
+Python Launcher
+SDK ARM Additions
+SDK ARM Redistributables
+Steam
+Universal CRT Extension SDK
+Universal CRT Headers Libraries and Sources
+Universal CRT Redistributable
+Universal CRT Tools x86
+Universal General MIDI DLS Extension SDK
+vcpp_crt.redist.clickonce
+Visual C++ Library CRT Appx Package
+Visual C++ Library CRT Appx Resource Package
+Visual C++ Library CRT ARM64 Appx Package
+Visual C++ Library CRT Desktop Appx Package
+Visual Studio Community 2022
+VS Immersive Activate Helper
+vs_BlendMsi
+vs_clickoncebootstrappermsi
+vs_clickoncebootstrappermsires
+vs_clickoncesigntoolmsi
+vs_communitymsires
+vs_communitysharedmsi
+vs_CoreEditorFonts
+vs_devenvsharedmsi
+vs_filehandler_amd64
+vs_filehandler_x86
+vs_FileTracker_Singleton
+vs_githubprotocolhandlermsi
+vs_Graphics_Singletonx86
+vs_minshellinteropsharedmsi
+vs_minshellmsires
+vs_minshellsharedmsi
+vs_SQLClickOnceBootstrappermsi
+vs_tipsmsi
+vs_vswebprotocolselectormsi
+vs_vswebprotocolselectormsires
+WinAppDeploy
+Windows App Certification Kit SupportedApiList x86
+Windows App Certification Kit x64
+Windows App Certification Kit x64 (OnecoreUAP)
+Windows Desktop Extension SDK
+Windows Desktop Extension SDK Contracts
+Windows IoT Extension SDK
+Windows IoT Extension SDK Contracts
+Windows Mobile Extension SDK
+Windows Mobile Extension SDK Contracts
+Windows SDK
+Windows SDK AddOn
+Windows SDK ARM Desktop Tools
+Windows SDK Desktop Headers arm
+Windows SDK Desktop Headers arm64
+Windows SDK Desktop Headers x64
+Windows SDK Desktop Headers x86
+Windows SDK Desktop Libs arm
+Windows SDK Desktop Libs arm64
+Windows SDK Desktop Libs x64
+Windows SDK Desktop Libs x86
+Windows SDK Desktop Tools arm64
+Windows SDK Desktop Tools x64
+Windows SDK Desktop Tools x86
+Windows SDK DirectX x86 Remote
+Windows SDK EULA
+Windows SDK Facade Windows WinMD Versioned
+Windows SDK for Windows Store Apps
+Windows SDK for Windows Store Apps Contracts
+Windows SDK for Windows Store Apps DirectX x86 Remote
+Windows SDK for Windows Store Apps Headers
+Windows SDK for Windows Store Apps Libs
+Windows SDK for Windows Store Apps Metadata
+Windows SDK for Windows Store Apps Tools
+Windows SDK for Windows Store Managed Apps Libs
+Windows SDK Modern Non-Versioned Developer Tools
+Windows SDK Modern Versioned Developer Tools
+Windows SDK Redistributables
+Windows SDK Signing Tools
+Windows Software Development Kit - Windows 10.0.22621.2428
+Windows Team Extension SDK
+Windows Team Extension SDK Contracts
+windows_toolscorepkg
+WinRT Intellisense Desktop - en-us
+WinRT Intellisense Desktop - Other Languages
+WinRT Intellisense IoT - en-us
+WinRT Intellisense IoT - Other Languages
+WinRT Intellisense Mobile - en-us
+WinRT Intellisense PPI - en-us
+WinRT Intellisense PPI - Other Languages
+WinRT Intellisense UAP - en-us
+WinRT Intellisense UAP - Other Languages
+WPT Redistributables
+WPTx64 (DesktopEditions)
+WPTx64 (OnecoreUAP)
+Диагностика принтеров Samsung
+Накопительный пакет обновления Microsoft .NET Framework Intellisense для Visual Studio (Русский)
+Пакет SDK для Microsoft .NET Framework 4.8 (Русский)
+Пакет нацеливания Microsoft .NET Framework 4.7.2 (Русский)
+Пакет нацеливания Microsoft .NET Framework 4.8 (Русский)
+Среда выполнения Microsoft Edge WebView2 Runtime
+
+Total programs: 159
