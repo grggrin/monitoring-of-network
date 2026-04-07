@@ -34,11 +34,15 @@ namespace server_prototype
 
         public Form_monitoring()
         {
+            
+
             InitializeComponent();
             InitTables();
             InitDatabase();
             StartAgentReceiver();
             textBoxInterval.Text = "60"; // значение по умолчани
+            gridAgents.CellClick += GridAgents_CellClick;
+
         }
 
         // ================= UI INIT =================
@@ -106,14 +110,25 @@ namespace server_prototype
             });
         }
 
+        /* string ExtractWarning(string text)
+         {
+             var lines = text.Split('\n');
+
+             var warningLine = lines
+                 .FirstOrDefault(l => l.Contains("WARNING:"));
+
+             return warningLine ?? "";
+         }*/
+
         string ExtractWarning(string text)
         {
             var lines = text.Split('\n');
 
-            var warningLine = lines
-                .FirstOrDefault(l => l.Contains("WARNING:"));
+            var warningLines = lines
+                .Where(l => l.Contains("WARNING"))
+                .ToList();
 
-            return warningLine ?? "";
+            return string.Join("\n", warningLines);
         }
 
         // ================= КНОПКИ =================
@@ -281,61 +296,71 @@ namespace server_prototype
         }
 
         // ================= АГЕНТЫ =================
-        /*void PollAgents()
-        {
-            foreach (string ip in _agents)
-            {
-                try
-                {
-                    string url = "http://" + ip + ":5050/getinfo";
 
-                    using (var wc = new WebClient())
-                    {
-                        wc.Encoding = Encoding.UTF8;
-                        string result = wc.DownloadString(url);
+        /* void PollAgents()
+         {
+             foreach (string ip in _agents)
+             {
+                 if (_cts.Token.IsCancellationRequested)
+                     return;
 
-                        AddAgentLog(ip, result, "");
-                        LogAgent(ip, result, "");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    AddAgentLog(ip, "", ex.Message);
-                    LogAgent(ip, "", ex.Message);
-                }
-            }
-        } */
+                 try
+                 {
+                     //string url = "http://" + ip + ":5050/getinfo";
+                     string url = GetAgentUrl(ip);
+                     using (var wc = new WebClient())
+                     {
+                         wc.Encoding = Encoding.UTF8;
+                         string report = wc.DownloadString(url);
+
+                         //  парсим
+                         double cpu = ParseValue(report, "CPU Load:");
+                         double ram = ParseValue(report, "RAM Usage:");
+                         double net = ParseValue(report, "Network Usage:");
+                         double diskC = ParseDiskUsage(report, "C:\\");
+                         // лог = можно оставить как есть (или укоротить)
+                         string log = $"CPU: {cpu}% | RAM: {ram}% | NET: {net}%";
+
+
+
+                         AddAgentLog(ip, log, "");
+                         LogAgent(ip, log, "");
+
+                         //if (!string.IsNullOrEmpty(warning))
+                          //   Log($"⚠️ Агент {ip}: {warning}");
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     AddAgentLog(ip, "", ex.Message);
+                     LogAgent(ip, "", ex.Message);
+
+                     Log($"Ошибка агента {ip}: {ex.Message}");
+                 }
+             }
+         } */
+
         void PollAgents()
         {
             foreach (string ip in _agents)
             {
                 if (_cts.Token.IsCancellationRequested)
                     return;
-                
                 try
                 {
-                    //string url = "http://" + ip + ":5050/getinfo";
                     string url = GetAgentUrl(ip);
+
                     using (var wc = new WebClient())
                     {
                         wc.Encoding = Encoding.UTF8;
                         string report = wc.DownloadString(url);
 
-                        //  парсим
-                        double cpu = ParseValue(report, "CPU Load:");
-                        double ram = ParseValue(report, "RAM Usage:");
-                        double net = ParseValue(report, "Network Usage:");
-                        double diskC = ParseDiskUsage(report, "C:\\");
-                        // лог = можно оставить как есть (или укоротить)
-                        string log = $"CPU: {cpu}% | RAM: {ram}% | NET: {net}%";
+                        // извлекаем warning
+                        string warning = ExtractWarning(report);
 
-                      
-
-                        AddAgentLog(ip, log, "");
-                        LogAgent(ip, log, "");
-
-                        //if (!string.IsNullOrEmpty(warning))
-                         //   Log($"⚠️ Агент {ip}: {warning}");
+                        // сохраняем ПОЛНЫЙ отчёт
+                        AddAgentLog(ip, report, warning);
+                        LogAgent(ip, report, warning);
                     }
                 }
                 catch (Exception ex)
@@ -556,11 +581,32 @@ namespace server_prototype
             return $"{(ip >> 24) & 255}.{(ip >> 16) & 255}.{(ip >> 8) & 255}.{ip & 255}";
         }
 
+
+        private void GridAgents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // проверяем, что клик именно по колонке Log (индекс 2)
+            if (e.ColumnIndex == 2)
+            {
+                string fullLog = gridAgents.Rows[e.RowIndex].Cells[2].Value?.ToString();
+
+                // MessageBox.Show(fullLog, "Полный лог", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                FormLogViewer form = new FormLogViewer(fullLog);
+                form.ShowDialog();
+
+            }
+        }
+
         private void buttonStop_Click_1(object sender, EventArgs e)
         {
             _cts?.Cancel();
             Log("Мониторинг остановлен");
+            MessageBox.Show( "Мониторинг остановлен");
         }
     }
+
+    
 }
 

@@ -18,3 +18,13 @@ D:\Desktop\dip\для агента\Настройка агента_perhaps final
 D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.csproj.CopyComplete
 D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.exe
 D:\Desktop\dip\для агента\Настройка агента_perhaps finale version\агент\agent_test1\obj\Debug\agent_test1.pdb
+D:\Desktop\dip\monitoring\agent_test1\bin\Debug\agent_test1.exe.config
+D:\Desktop\dip\monitoring\agent_test1\bin\Debug\agent_test1.exe
+D:\Desktop\dip\monitoring\agent_test1\bin\Debug\agent_test1.pdb
+D:\Desktop\dip\monitoring\agent_test1\bin\Debug\System.CodeDom.dll
+D:\Desktop\dip\monitoring\agent_test1\bin\Debug\System.CodeDom.xml
+D:\Desktop\dip\monitoring\agent_test1\obj\Debug\agent_test1.csproj.AssemblyReference.cache
+D:\Desktop\dip\monitoring\agent_test1\obj\Debug\agent_test1.csproj.CoreCompileInputs.cache
+D:\Desktop\dip\monitoring\agent_test1\obj\Debug\agent_test1.csproj.CopyComplete
+D:\Desktop\dip\monitoring\agent_test1\obj\Debug\agent_test1.exe
+D:\Desktop\dip\monitoring\agent_test1\obj\Debug\agent_test1.pdb

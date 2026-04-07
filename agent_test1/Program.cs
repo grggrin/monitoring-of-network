@@ -123,7 +123,15 @@ namespace SystemInfoCollector
             report.AppendLine("\nDISK USAGE:");
             foreach (var d in diskUsage)
                 report.AppendLine(d);
+            // после DISK USAGE
 
+            report.AppendLine("\nINSTALLED PROGRAMS:");
+            var programs = GetInstalledPrograms();
+
+            foreach (string p in programs)
+                report.AppendLine(p);
+
+            report.AppendLine("\nTotal programs: " + programs.Count);
             //CheckLimits(cfg, cpuLoad, ramLoad, diskUsage, netUsage);
 
             var warnings = CheckLimits(cfg, cpuLoad, ramLoad, diskUsage, netUsage);
