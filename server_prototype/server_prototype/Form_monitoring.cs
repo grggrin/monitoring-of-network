@@ -18,6 +18,8 @@ namespace server_prototype
 {
     public partial class Form_monitoring : Form
     {
+        
+      
         string GetAgentUrl(string ip)
         {
             return $"http://{ip}:5050/getinfo";
@@ -26,7 +28,7 @@ namespace server_prototype
 
         string dbPath = "Data Source=server.db;";
         CancellationTokenSource _cts;
-
+        private static HttpListener _listener; // статический, общий для всех экземпляров
         HashSet<string> _authorized = new HashSet<string>();
         HashSet<string> _ignored = new HashSet<string>();
         List<string> _agents = new List<string>();
@@ -62,43 +64,52 @@ namespace server_prototype
             gridAgents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+
         void StartAgentReceiver()
         {
+            // Если listener уже запущен, не делаем ничего
+            if (_listener != null && _listener.IsListening)
+                return;
+
+            // Создаём один статический listener
+            _listener = new HttpListener();
+            _listener.Prefixes.Add("http://+:5050/agentdata/");
+
+            try
+            {
+                _listener.Start();
+                Log("HTTP сервер для агентов запущен (порт 5050)");
+            }
+            catch (HttpListenerException ex)
+            {
+                Log("Ошибка запуска HTTP сервера: " + ex.Message);
+                return;
+            }
+
+            // Запуск обработчика в отдельной задаче
             Task.Run(() =>
             {
-                HttpListener listener = new HttpListener();
-
-                listener.Prefixes.Add("http://+:5050/agentdata/");
-                listener.Start();
-                Log("HTTP сервер для агентов запущен (порт 5050)");
-
-                while (true)
+                while (_listener.IsListening)
                 {
                     try
                     {
-                        var ctx = listener.GetContext();
+                        // Получаем контекст запроса
+                        var ctx = _listener.GetContext();
 
-                        string data = "";
-
+                        string data;
                         using (var reader = new StreamReader(ctx.Request.InputStream))
                         {
                             data = reader.ReadToEnd();
                         }
 
                         string ip = ctx.Request.RemoteEndPoint.Address.ToString();
-
-                        // логируем
-                        // AddAgentLog(ip, data, "");
-                        // LogAgent(ip, data, "");
-
                         string warning = ExtractWarning(data);
 
                         AddAgentLog(ip, data, warning);
                         LogAgent(ip, data, warning);
-
-
                         Log($"Данные от агента {ip}");
 
+                        // Ответ агенту
                         ctx.Response.StatusCode = 200;
                         ctx.Response.Close();
                     }
@@ -109,6 +120,59 @@ namespace server_prototype
                 }
             });
         }
+        /* void StartAgentReceiver()
+         {
+             if (_listener != null && _listener.IsListening)
+                 return; // уже запущен
+             _listener = new HttpListener();
+             _listener.Prefixes.Add("http://+:5050/agentdata/");
+             _listener.Start();
+             Log("HTTP сервер для агентов запущен (порт 5050)");
+             Task.Run(() =>
+             {
+                 HttpListener listener = new HttpListener();
+
+                 listener.Prefixes.Add("http://+:5050/agentdata/");
+                 listener.Start();
+                 Log("HTTP сервер для агентов запущен (порт 5050)");
+
+                 while (true)
+                 {
+                     try
+                     {
+                         var ctx = listener.GetContext();
+
+                         string data = "";
+
+                         using (var reader = new StreamReader(ctx.Request.InputStream))
+                         {
+                             data = reader.ReadToEnd();
+                         }
+
+                         string ip = ctx.Request.RemoteEndPoint.Address.ToString();
+
+                         // логируем
+                         // AddAgentLog(ip, data, "");
+                         // LogAgent(ip, data, "");
+
+                         string warning = ExtractWarning(data);
+
+                         AddAgentLog(ip, data, warning);
+                         LogAgent(ip, data, warning);
+
+
+                         Log($"Данные от агента {ip}");
+
+                         ctx.Response.StatusCode = 200;
+                         ctx.Response.Close();
+                     }
+                     catch (Exception ex)
+                     {
+                         Log("Ошибка HTTP сервера: " + ex.Message);
+                     }
+                 }
+             });
+         }*/
 
         /* string ExtractWarning(string text)
          {
@@ -582,7 +646,7 @@ namespace server_prototype
         }
 
 
-        private void GridAgents_CellClick(object sender, DataGridViewCellEventArgs e)
+        /*private void GridAgents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
@@ -597,6 +661,38 @@ namespace server_prototype
                 form.ShowDialog();
 
             }
+        }*/
+
+        private void GridAgents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = gridAgents.Rows[e.RowIndex];
+
+            string textToShow = "";
+            string title = "";
+
+            if (e.ColumnIndex == 2) // Log
+            {
+                textToShow = row.Cells[2].Value?.ToString();
+                title = "Полный лог";
+            }
+            else if (e.ColumnIndex == 3) // Warning
+            {
+                textToShow = row.Cells[3].Value?.ToString();
+                title = "Предупреждения";
+            }
+            else
+            {
+                return; // остальные колонки игнорируем
+            }
+
+            if (string.IsNullOrWhiteSpace(textToShow))
+                textToShow = "Нет данных";
+
+            FormLogViewer form = new FormLogViewer(textToShow);
+            form.Text = title; // заголовок окна
+            form.ShowDialog();
         }
 
         private void buttonStop_Click_1(object sender, EventArgs e)

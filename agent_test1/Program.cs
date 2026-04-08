@@ -97,7 +97,7 @@ namespace SystemInfoCollector
 
             StringBuilder report = new StringBuilder();
 
-            report.AppendLine("===== SYSTEM INFORMATION =====");
+            report.AppendLine("SYSTEM INFORMATION");
             report.AppendLine("Time: " + DateTime.Now);
             report.AppendLine();
 
@@ -193,7 +193,7 @@ namespace SystemInfoCollector
             try
             {
                 string serverIp = LoadConfig().ServerIP;
-                string url = "http://" + serverIp + ":5050/agentdata";
+                string url = "http://" + serverIp + ":5050/agentdata/";
 
                 using (var wc = new WebClient())
                 {
