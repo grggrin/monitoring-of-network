@@ -38,11 +38,14 @@
             // 
             // button_monitor
             // 
+            this.button_monitor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_monitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_monitor.Location = new System.Drawing.Point(15, 185);
-            this.button_monitor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_monitor.Location = new System.Drawing.Point(11, 150);
+            this.button_monitor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_monitor.Name = "button_monitor";
-            this.button_monitor.Size = new System.Drawing.Size(337, 34);
+            this.button_monitor.Size = new System.Drawing.Size(253, 28);
             this.button_monitor.TabIndex = 1;
             this.button_monitor.Text = "Запустить мониторинг";
             this.button_monitor.UseVisualStyleBackColor = true;
@@ -50,11 +53,14 @@
             // 
             // button_Authorised
             // 
+            this.button_Authorised.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Authorised.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Authorised.Location = new System.Drawing.Point(12, 14);
-            this.button_Authorised.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Authorised.Location = new System.Drawing.Point(9, 11);
+            this.button_Authorised.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_Authorised.Name = "button_Authorised";
-            this.button_Authorised.Size = new System.Drawing.Size(340, 60);
+            this.button_Authorised.Size = new System.Drawing.Size(255, 49);
             this.button_Authorised.TabIndex = 2;
             this.button_Authorised.Text = "Редактирование списка авторизированных устройств";
             this.button_Authorised.UseVisualStyleBackColor = true;
@@ -62,11 +68,14 @@
             // 
             // button_Agent
             // 
+            this.button_Agent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Agent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Agent.Location = new System.Drawing.Point(15, 140);
-            this.button_Agent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Agent.Location = new System.Drawing.Point(11, 114);
+            this.button_Agent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_Agent.Name = "button_Agent";
-            this.button_Agent.Size = new System.Drawing.Size(337, 39);
+            this.button_Agent.Size = new System.Drawing.Size(253, 32);
             this.button_Agent.TabIndex = 3;
             this.button_Agent.Text = "Редактирование списка агентов";
             this.button_Agent.UseVisualStyleBackColor = true;
@@ -74,11 +83,14 @@
             // 
             // button_Ignored
             // 
+            this.button_Ignored.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Ignored.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Ignored.Location = new System.Drawing.Point(12, 79);
-            this.button_Ignored.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_Ignored.Location = new System.Drawing.Point(9, 64);
+            this.button_Ignored.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_Ignored.Name = "button_Ignored";
-            this.button_Ignored.Size = new System.Drawing.Size(340, 57);
+            this.button_Ignored.Size = new System.Drawing.Size(255, 46);
             this.button_Ignored.TabIndex = 4;
             this.button_Ignored.Text = "Редактирование списка игнорируемых устройств";
             this.button_Ignored.UseVisualStyleBackColor = true;
@@ -86,11 +98,14 @@
             // 
             // button_monitoringLog
             // 
+            this.button_monitoringLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_monitoringLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_monitoringLog.Location = new System.Drawing.Point(12, 261);
-            this.button_monitoringLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_monitoringLog.Location = new System.Drawing.Point(9, 212);
+            this.button_monitoringLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_monitoringLog.Name = "button_monitoringLog";
-            this.button_monitoringLog.Size = new System.Drawing.Size(337, 34);
+            this.button_monitoringLog.Size = new System.Drawing.Size(253, 28);
             this.button_monitoringLog.TabIndex = 5;
             this.button_monitoringLog.Text = "Лог мониторинга";
             this.button_monitoringLog.UseVisualStyleBackColor = true;
@@ -98,11 +113,14 @@
             // 
             // button_agentLog
             // 
+            this.button_agentLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_agentLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_agentLog.Location = new System.Drawing.Point(14, 223);
-            this.button_agentLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_agentLog.Location = new System.Drawing.Point(10, 181);
+            this.button_agentLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_agentLog.Name = "button_agentLog";
-            this.button_agentLog.Size = new System.Drawing.Size(337, 34);
+            this.button_agentLog.Size = new System.Drawing.Size(253, 28);
             this.button_agentLog.TabIndex = 6;
             this.button_agentLog.Text = "Логи с агентов";
             this.button_agentLog.UseVisualStyleBackColor = true;
@@ -110,16 +128,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 310);
+            this.ClientSize = new System.Drawing.Size(272, 252);
             this.Controls.Add(this.button_agentLog);
             this.Controls.Add(this.button_monitoringLog);
             this.Controls.Add(this.button_Ignored);
             this.Controls.Add(this.button_Agent);
             this.Controls.Add(this.button_Authorised);
             this.Controls.Add(this.button_monitor);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
