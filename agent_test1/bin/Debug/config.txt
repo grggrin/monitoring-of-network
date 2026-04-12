@@ -2,4 +2,4 @@ Server IP: 127.0.0.1
 CPU usage: 70
 RAM usage: 20
 Disks usage: 80
-Network adapter usage: 40
+

@@ -63,9 +63,6 @@
             // 
             // textBoxInterval
             // 
-            this.textBoxInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxInterval.Location = new System.Drawing.Point(118, 7);
             this.textBoxInterval.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxInterval.Name = "textBoxInterval";
@@ -74,14 +71,11 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonStart.Location = new System.Drawing.Point(12, 30);
+            this.buttonStart.Location = new System.Drawing.Point(13, 36);
             this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(58, 25);
+            this.buttonStart.Size = new System.Drawing.Size(75, 25);
             this.buttonStart.TabIndex = 2;
             this.buttonStart.Text = "Старт";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -89,14 +83,11 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonStop.Location = new System.Drawing.Point(72, 30);
+            this.buttonStop.Location = new System.Drawing.Point(92, 36);
             this.buttonStop.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(58, 25);
+            this.buttonStop.Size = new System.Drawing.Size(75, 25);
             this.buttonStop.TabIndex = 3;
             this.buttonStop.Text = "Стоп";
             this.buttonStop.UseVisualStyleBackColor = true;

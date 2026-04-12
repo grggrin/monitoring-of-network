@@ -95,3 +95,4 @@ D:\Desktop\dip\monitoring\server_prototype\server_prototype\obj\x64\Debug\server
 D:\Desktop\dip\monitoring\server_prototype\server_prototype\obj\x64\Debug\server_prototype.exe
 D:\Desktop\dip\monitoring\server_prototype\server_prototype\obj\x64\Debug\server_prototype.pdb
 D:\Desktop\dip\monitoring\server_prototype\server_prototype\obj\x64\Debug\server_prototype.FormLogViewer.resources
+D:\Desktop\dip\monitoring\server_prototype\server_prototype\obj\x64\Debug\server_prototype.Form_logs.resources

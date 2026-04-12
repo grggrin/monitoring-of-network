@@ -19,17 +19,17 @@ namespace SystemInfoCollector
             public int CpuLimit;
             public int RamLimit;
             public int DiskLimit;
-            public int NetworkLimit;
+            //public int NetworkLimit;
         }
 
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Agent started...");
+           // Console.WriteLine("Agent started...");
 
             // 1. скан при запуске
             string report = CollectInfo();
-            Console.WriteLine(report);
+            //Console.WriteLine(report);
 
             SendToServer(report);
 
@@ -114,11 +114,11 @@ namespace SystemInfoCollector
             float cpuLoad = GetCpuLoad();
             float ramLoad = GetRamUsage();
             var diskUsage = GetDiskUsage();
-            double netUsage = GetNetworkUsagePercent();
+          //  double netUsage = GetNetworkUsagePercent();
 
             report.AppendLine("\nCPU Load: " + cpuLoad + " %");
             report.AppendLine("RAM Usage: " + ramLoad + " %");
-            report.AppendLine("Network Usage: " + netUsage + " %");
+           // report.AppendLine("Network Usage: " + netUsage + " %");
 
             report.AppendLine("\nDISK USAGE:");
             foreach (var d in diskUsage)
@@ -134,7 +134,7 @@ namespace SystemInfoCollector
             report.AppendLine("\nTotal programs: " + programs.Count);
             //CheckLimits(cfg, cpuLoad, ramLoad, diskUsage, netUsage);
 
-            var warnings = CheckLimits(cfg, cpuLoad, ramLoad, diskUsage, netUsage);
+            var warnings = CheckLimits(cfg, cpuLoad, ramLoad, diskUsage);
 
           //  report.AppendLine("\n===== WARNINGS =====");
 
@@ -157,7 +157,7 @@ namespace SystemInfoCollector
             listener.Prefixes.Add("http://+:5050/");
             listener.Start();
 
-            Console.WriteLine("Agent listening on port 5050...");
+           // Console.WriteLine("Agent listening on port 5050...");
 
             while (true)
             {
@@ -175,7 +175,7 @@ namespace SystemInfoCollector
 
                 else if (request.Url.AbsolutePath == "/scan")
                 {
-                    Console.WriteLine("Scan requested by server");
+                   // Console.WriteLine("Scan requested by server");
 
                     string report = CollectInfo();
 
@@ -201,11 +201,11 @@ namespace SystemInfoCollector
                     wc.UploadString(url, "POST", data);
                 }
 
-                Console.WriteLine("Data sent to server");
+               // Console.WriteLine("Data sent to server");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Send error: " + ex.Message);
+               // Console.WriteLine("Send error: " + ex.Message);
             }
         }
         private static Config LoadConfig()
@@ -214,7 +214,7 @@ namespace SystemInfoCollector
 
             if (!File.Exists("config.txt"))
             {
-                Console.WriteLine("config.txt not found");
+               // Console.WriteLine("config.txt not found");
                 return cfg;
             }
 
@@ -232,8 +232,8 @@ namespace SystemInfoCollector
                 if (line.StartsWith("Disks usage"))
                     cfg.DiskLimit = int.Parse(line.Split(':')[1].Trim());
 
-                if (line.StartsWith("Network adapter usage"))
-                    cfg.NetworkLimit = int.Parse(line.Split(':')[1].Trim());
+              //  if (line.StartsWith("Network adapter usage"))
+                 //   cfg.NetworkLimit = int.Parse(line.Split(':')[1].Trim());
             }
 
             return cfg;
@@ -273,7 +273,7 @@ namespace SystemInfoCollector
             }
         } */
 
-        private static List<string> CheckLimits(Config cfg, float cpu, float ram, List<string> diskUsage, double net)
+        private static List<string> CheckLimits(Config cfg, float cpu, float ram, List<string> diskUsage)
         {
             List<string> warnings = new List<string>();
 
@@ -283,8 +283,8 @@ namespace SystemInfoCollector
             if (ram > cfg.RamLimit)
                 warnings.Add($"WARNING: RAM usage exceeded! ({ram}% > {cfg.RamLimit}%)");
 
-            if (net > cfg.NetworkLimit)
-                warnings.Add($"WARNING: Network usage exceeded! ({net}% > {cfg.NetworkLimit}%)");
+           // if (net > cfg.NetworkLimit)
+           //     warnings.Add($"WARNING: Network usage exceeded! ({net}% > {cfg.NetworkLimit}%)");
 
             foreach (var disk in diskUsage)
             {

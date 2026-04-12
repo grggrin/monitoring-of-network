@@ -89,13 +89,13 @@ namespace server_prototype
 
         private void button_monitoringLog_Click(object sender, EventArgs e)
         {
-         
-            Form_agentLog existingForm = Application.OpenForms
-                .OfType<Form_agentLog>()
+
+            Form_logs existingForm = Application.OpenForms
+                .OfType<Form_logs>()
                 .FirstOrDefault();
             if (existingForm == null)
             {
-                new Form_agentLog().Show();
+                new Form_logs().Show();
             }
             else
             {
