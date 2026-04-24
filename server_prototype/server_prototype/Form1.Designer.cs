@@ -43,7 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_monitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_monitor.Location = new System.Drawing.Point(11, 150);
-            this.button_monitor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_monitor.Margin = new System.Windows.Forms.Padding(2);
             this.button_monitor.Name = "button_monitor";
             this.button_monitor.Size = new System.Drawing.Size(253, 28);
             this.button_monitor.TabIndex = 1;
@@ -58,7 +58,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Authorised.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Authorised.Location = new System.Drawing.Point(9, 11);
-            this.button_Authorised.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Authorised.Margin = new System.Windows.Forms.Padding(2);
             this.button_Authorised.Name = "button_Authorised";
             this.button_Authorised.Size = new System.Drawing.Size(255, 49);
             this.button_Authorised.TabIndex = 2;
@@ -73,7 +73,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Agent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Agent.Location = new System.Drawing.Point(11, 114);
-            this.button_Agent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Agent.Margin = new System.Windows.Forms.Padding(2);
             this.button_Agent.Name = "button_Agent";
             this.button_Agent.Size = new System.Drawing.Size(253, 32);
             this.button_Agent.TabIndex = 3;
@@ -88,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Ignored.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Ignored.Location = new System.Drawing.Point(9, 64);
-            this.button_Ignored.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Ignored.Margin = new System.Windows.Forms.Padding(2);
             this.button_Ignored.Name = "button_Ignored";
             this.button_Ignored.Size = new System.Drawing.Size(255, 46);
             this.button_Ignored.TabIndex = 4;
@@ -103,7 +103,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_monitoringLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_monitoringLog.Location = new System.Drawing.Point(9, 212);
-            this.button_monitoringLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_monitoringLog.Margin = new System.Windows.Forms.Padding(2);
             this.button_monitoringLog.Name = "button_monitoringLog";
             this.button_monitoringLog.Size = new System.Drawing.Size(253, 28);
             this.button_monitoringLog.TabIndex = 5;
@@ -118,7 +118,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button_agentLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_agentLog.Location = new System.Drawing.Point(10, 181);
-            this.button_agentLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_agentLog.Margin = new System.Windows.Forms.Padding(2);
             this.button_agentLog.Name = "button_agentLog";
             this.button_agentLog.Size = new System.Drawing.Size(253, 28);
             this.button_agentLog.TabIndex = 6;
@@ -137,9 +137,10 @@
             this.Controls.Add(this.button_Agent);
             this.Controls.Add(this.button_Authorised);
             this.Controls.Add(this.button_monitor);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

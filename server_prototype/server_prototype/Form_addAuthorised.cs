@@ -48,7 +48,8 @@ namespace server_prototype
                     // таблица с UNIQUE
                     string createTable = @"CREATE TABLE IF NOT EXISTS Authorised (
                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    ip TEXT UNIQUE
+                                    ip TEXT UNIQUE,
+                                    name TEXT
                                   )";
 
                     using (SQLiteCommand cmd = new SQLiteCommand(createTable, connection))
@@ -56,12 +57,20 @@ namespace server_prototype
                         cmd.ExecuteNonQuery();
                     }
 
-                    // вставка
-                    string query = "INSERT INTO Authorised (ip) VALUES (@ip)";
+                    if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                    {
+                        MessageBox.Show("Введите имя устройства!");
+                        return;
+                    }
 
+                    // вставка
+                    //string query = "INSERT INTO Authorised (ip) VALUES (@ip)";
+
+                    string query = "INSERT INTO Authorised (ip, name) VALUES (@ip, @name)";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ip", textBox_ipAuthorised.Text);
+                        command.Parameters.AddWithValue("@name", textBoxName.Text);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -80,8 +89,6 @@ namespace server_prototype
 
         private void button_deleteAuthorised_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 if (dataGridViewAuthorised.SelectedRows.Count == 0)
@@ -115,17 +122,13 @@ namespace server_prototype
                         command.ExecuteNonQuery();
                     }
                 }
-
                 MessageBox.Show("Авторизированное устройство удалено");
-
                 LoadAuthorised(); // обновляем таблицу
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
         }
 
        
@@ -138,7 +141,7 @@ namespace server_prototype
             {
                 connection.Open();
 
-                string query = "SELECT id, ip FROM Authorised";
+                string query = "SELECT id, ip, name FROM Authorised";
 
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                 {
@@ -148,9 +151,9 @@ namespace server_prototype
                     dataGridViewAuthorised.DataSource = table;
                 }
             }
-
             dataGridViewAuthorised.Columns["id"].HeaderText = "ID";
             dataGridViewAuthorised.Columns["ip"].HeaderText = "IP-адрес";
+            dataGridViewAuthorised.Columns["name"].HeaderText = "Имя устройства";
         }
     }
 }

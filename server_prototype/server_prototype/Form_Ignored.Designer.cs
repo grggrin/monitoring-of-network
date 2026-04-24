@@ -34,6 +34,8 @@
             this.textBox_IP = new System.Windows.Forms.TextBox();
             this.dataGridViewIgnored = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIgnored)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             this.button_addIgnored.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_addIgnored.Location = new System.Drawing.Point(18, 43);
             this.button_addIgnored.Name = "button_addIgnored";
-            this.button_addIgnored.Size = new System.Drawing.Size(160, 23);
+            this.button_addIgnored.Size = new System.Drawing.Size(203, 23);
             this.button_addIgnored.TabIndex = 1;
             this.button_addIgnored.Text = "Добавить устройство";
             this.button_addIgnored.UseVisualStyleBackColor = true;
@@ -61,12 +63,13 @@
             // button_deleteIgnored
             // 
             this.button_deleteIgnored.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_deleteIgnored.Location = new System.Drawing.Point(184, 43);
+            this.button_deleteIgnored.Location = new System.Drawing.Point(230, 43);
             this.button_deleteIgnored.Name = "button_deleteIgnored";
-            this.button_deleteIgnored.Size = new System.Drawing.Size(150, 23);
+            this.button_deleteIgnored.Size = new System.Drawing.Size(160, 23);
             this.button_deleteIgnored.TabIndex = 2;
             this.button_deleteIgnored.Text = "Удалить устройство";
             this.button_deleteIgnored.UseVisualStyleBackColor = true;
+            this.button_deleteIgnored.Click += new System.EventHandler(this.button_deleteIgnored_Click);
             // 
             // textBox_IP
             // 
@@ -77,17 +80,20 @@
             // 
             // dataGridViewIgnored
             // 
+            this.dataGridViewIgnored.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewIgnored.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewIgnored.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIgnored.Location = new System.Drawing.Point(18, 88);
-            this.dataGridViewIgnored.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewIgnored.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewIgnored.MultiSelect = false;
             this.dataGridViewIgnored.Name = "dataGridViewIgnored";
             this.dataGridViewIgnored.ReadOnly = true;
             this.dataGridViewIgnored.RowHeadersWidth = 51;
             this.dataGridViewIgnored.RowTemplate.Height = 24;
             this.dataGridViewIgnored.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewIgnored.Size = new System.Drawing.Size(316, 123);
+            this.dataGridViewIgnored.Size = new System.Drawing.Size(372, 123);
             this.dataGridViewIgnored.TabIndex = 5;
             // 
             // label1
@@ -101,11 +107,30 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Список игнорируемых устройств";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(227, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Имя:";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(265, 11);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(86, 20);
+            this.textBoxName.TabIndex = 8;
+            // 
             // Form_Ignored
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(399, 218);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewIgnored);
             this.Controls.Add(this.textBox_IP);
@@ -114,6 +139,7 @@
             this.Controls.Add(this.label_IP);
             this.Name = "Form_Ignored";
             this.Text = "Редактирование списка игнорируемых устройств";
+            this.Load += new System.EventHandler(this.Form_Ignored_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIgnored)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,5 +154,7 @@
         private System.Windows.Forms.TextBox textBox_IP;
         private System.Windows.Forms.DataGridView dataGridViewIgnored;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxName;
     }
 }

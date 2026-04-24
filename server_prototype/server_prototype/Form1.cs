@@ -131,5 +131,10 @@ namespace server_prototype
                 existingForm.Activate();
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

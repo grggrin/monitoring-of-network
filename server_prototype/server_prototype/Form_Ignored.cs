@@ -17,11 +17,11 @@ namespace server_prototype
         public Form_Ignored()
         {
             InitializeComponent();
+            LoadIgnored();
         }
 
         private void button_addIgnored_Click(object sender, EventArgs e)
         {
-            // MessageBox.Show("Кнопка нажата");
             try
             {
                 if (string.IsNullOrWhiteSpace(textBox_IP.Text))
@@ -42,8 +42,6 @@ namespace server_prototype
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-
-                    // таблица с UNIQUE
                     string createTable = @"CREATE TABLE IF NOT EXISTS Ignored (
                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                                     ip TEXT UNIQUE
@@ -53,13 +51,17 @@ namespace server_prototype
                     {
                         cmd.ExecuteNonQuery();
                     }
-
-                    // вставка
-                    string query = "INSERT INTO Ignored (ip) VALUES (@ip)";
+                    if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                    {
+                        MessageBox.Show("Введите имя устройства!");
+                        return;
+                    }
+                    string query = "INSERT INTO Ignored (ip, name) VALUES (@ip, @name)";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ip", textBox_IP.Text);
+                        command.Parameters.AddWithValue("@name", textBoxName.Text);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -84,7 +86,7 @@ namespace server_prototype
             {
                 connection.Open();
 
-                string query = "SELECT id, ip FROM Ignored";
+                string query = "SELECT id, ip, name FROM Ignored";
 
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                 {
@@ -94,9 +96,58 @@ namespace server_prototype
                     dataGridViewIgnored.DataSource = table;
                 }
             }
-
             dataGridViewIgnored.Columns["id"].HeaderText = "ID";
             dataGridViewIgnored.Columns["ip"].HeaderText = "IP-адрес";
+            dataGridViewIgnored.Columns["name"].HeaderText = "Имя устройства";
+        }
+
+        private void Form_Ignored_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_deleteIgnored_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewIgnored.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Выберите строку!");
+                    return;
+                }
+
+                var result = MessageBox.Show("Удалить игнорируемое устройство?", "Подтверждение",
+                    MessageBoxButtons.YesNo);
+
+                if (result != DialogResult.Yes)
+                    return;
+
+                int id = Convert.ToInt32(
+                    dataGridViewIgnored.SelectedRows[0].Cells["id"].Value
+                );
+
+                string dbPath = Path.Combine(Application.StartupPath, "server.db");
+                string connectionString = $"Data Source={dbPath};Version=3;";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM Ignored WHERE id = @id";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Игнорируемое устройство удалено");
+                LoadIgnored(); // обновляем таблицу
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

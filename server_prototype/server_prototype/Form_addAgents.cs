@@ -107,7 +107,8 @@ namespace server_prototype
                     // таблица с UNIQUE
                     string createTable = @"CREATE TABLE IF NOT EXISTS Agents (
                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    ip TEXT UNIQUE
+                                    ip TEXT UNIQUE,
+                                    name TEXT
                                   )";
 
                     using (SQLiteCommand cmd = new SQLiteCommand(createTable, connection))
@@ -115,12 +116,35 @@ namespace server_prototype
                         cmd.ExecuteNonQuery();
                     }
 
-                    // вставка
-                    string query = "INSERT INTO Agents (ip) VALUES (@ip)";
+                    /* if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                     {
+                         MessageBox.Show("Введите имя устройства!");
+                         return;
+                     }
+                     else
+                     {
+                         // вставка
+                         // string query = "INSERT INTO Agents (ip) VALUES (@ip)";
+                         string query = "INSERT INTO Agents (ip, name) VALUES (@ip, @name)";
+                         using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                         {
+                             command.Parameters.AddWithValue("@ip", textBox_ipAgent.Text);
+                             command.Parameters.AddWithValue("@name", textBoxName.Text);
+                             command.ExecuteNonQuery();
+                         }
+                     }*/
+                    if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                    {
+                        MessageBox.Show("Введите имя устройства!");
+                        return;
+                    }
+
+                    string query = "INSERT INTO Agents (ip, name) VALUES (@ip, @name)";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ip", textBox_ipAgent.Text);
+                        command.Parameters.AddWithValue("@name", textBoxName.Text);
                         command.ExecuteNonQuery();
                     }
                 }
@@ -136,8 +160,6 @@ namespace server_prototype
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
 
 
 
@@ -197,7 +219,8 @@ namespace server_prototype
             {
                 connection.Open();
 
-                string query = "SELECT id, ip FROM Agents";
+                //string query = "SELECT id, ip FROM Agents";
+                string query = "SELECT id, ip, name FROM Agents";
 
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                 {
@@ -207,9 +230,9 @@ namespace server_prototype
                     dataGridViewAgents.DataSource = table;
                 }
             }
-
             dataGridViewAgents.Columns["id"].HeaderText = "ID";
             dataGridViewAgents.Columns["ip"].HeaderText = "IP-адрес";
+            dataGridViewAgents.Columns["name"].HeaderText = "Имя устройства";
         }
     }
 }

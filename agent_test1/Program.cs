@@ -36,60 +36,7 @@ namespace SystemInfoCollector
             // 2. запуск HTTP сервера
             StartHttpServer();
 
-            /*Config cfg = LoadConfig();
-
-            StringBuilder report = new StringBuilder();
-
-            report.AppendLine("===== SYSTEM INFORMATION =====");
-            report.AppendLine("Time: " + DateTime.Now);
-            report.AppendLine();
-
-            var hw = GetHardwareInfo();
-
-            report.AppendLine("HARDWARE:");
-            report.AppendLine("CPU: " + hw["CPU"]);
-            report.AppendLine("RAM: " + hw["RAM_GB"] + " GB");
-
-            report.AppendLine("\nDISKS:");
-            foreach (string disk in (List<string>)hw["Disks"])
-                report.AppendLine(disk);
-
-            float cpuLoad = GetCpuLoad();
-            float ramLoad = GetRamUsage();
-            var diskUsage = GetDiskUsage();
-            double netUsage = GetNetworkUsagePercent();
-
-            report.AppendLine("\nCPU Load: " + cpuLoad + " %");
-            report.AppendLine("RAM Usage: " + ramLoad + " %");
-            report.AppendLine("Network Usage: " + netUsage + " %");
-
-            report.AppendLine("\nDISK USAGE:");
-            foreach (var d in diskUsage)
-                report.AppendLine(d);
-
-            report.AppendLine("\nINSTALLED PROGRAMS:");
-            var programs = GetInstalledPrograms();
-
-            foreach (string p in programs)
-                report.AppendLine(p);
-
-            report.AppendLine("\nTotal programs: " + programs.Count);
-
-            string output = report.ToString();
-
-            Console.WriteLine(output);
-
-            CheckLimits(cfg, cpuLoad, ramLoad, diskUsage, netUsage);
-
-            string filePath = "system_report.txt";
-            File.WriteAllText(filePath, output);
-
-            Console.WriteLine("\nReport saved to: " + Path.GetFullPath(filePath));
-            */
-
-
-            //Console.WriteLine("\nPress any key...");
-            //Console.ReadKey();
+           
         }
         static string CollectInfo()
         {
@@ -136,7 +83,7 @@ namespace SystemInfoCollector
 
             var warnings = CheckLimits(cfg, cpuLoad, ramLoad, diskUsage);
 
-          //  report.AppendLine("\n===== WARNINGS =====");
+          
 
             if (warnings.Count == 0)
             {
@@ -153,7 +100,6 @@ namespace SystemInfoCollector
         static void StartHttpServer()
         {
             HttpListener listener = new HttpListener();
-           
             listener.Prefixes.Add("http://+:5050/");
             listener.Start();
 
@@ -214,7 +160,7 @@ namespace SystemInfoCollector
 
             if (!File.Exists("config.txt"))
             {
-               // Console.WriteLine("config.txt not found");
+               //Console.WriteLine("config.txt not found");
                 return cfg;
             }
 
@@ -414,7 +360,7 @@ namespace SystemInfoCollector
             return disks;
         }
 
-        private static double GetNetworkUsagePercent()
+       /* private static double GetNetworkUsagePercent()
         {
             string instanceName = GetNetworkInterfaceName();
 
@@ -467,6 +413,6 @@ namespace SystemInfoCollector
             }
 
             return instances.Length > 0 ? instances[0] : "";
-        }
+        }*/
     }
 }

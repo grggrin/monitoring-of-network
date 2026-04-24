@@ -17,7 +17,7 @@ namespace server_prototype
         public Form_logs()
         {
             InitializeComponent();
-
+           
             comboBoxFilter.Items.AddRange(new string[]
             {
                 "All",
@@ -37,22 +37,6 @@ namespace server_prototype
             this.Shown += (s, e) => ApplyFilter();
          
         }
-
-        /*void LoadLogs()
-        {
-            using (var conn = new SQLiteConnection(dbPath))
-            {
-                conn.Open();
-
-                string query = "SELECT time, ip, status FROM Monitoring_log ORDER BY time DESC";
-
-                var adapter = new SQLiteDataAdapter(query, conn);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                gridLogs.DataSource = table;
-            }
-        }*/
         DataTable _table;
 
         void LoadLogs(string search, string status, DateTime from, DateTime to)
@@ -63,10 +47,9 @@ namespace server_prototype
 
                 var query = new StringBuilder();
                 query.Append(@"
-            SELECT time, ip, status
-            FROM Monitoring_log
-            WHERE 1=1
-        ");
+                SELECT time, name, ip, status
+                FROM Monitoring_log
+                WHERE 1=1");
 
                 var cmd = new SQLiteCommand();
                 cmd.Connection = conn;
@@ -98,64 +81,14 @@ namespace server_prototype
 
                 gridLogs.DataSource = table;
             }
+         
+
+            gridLogs.Columns["name"].HeaderText = "Имя";
+            gridLogs.Columns["ip"].HeaderText = "IP";
+            gridLogs.Columns["status"].HeaderText = "Статус";
+            gridLogs.Columns["time"].HeaderText = "Время";
         }
-
-
-        /*void ApplyFilter()
-        {
-            string search = textBoxSearch.Text.Trim().ToLower();
-            string filter = comboBoxFilter.SelectedItem.ToString().ToLower();
-
-            DateTime from = dateTimeFrom.Value;
-            DateTime to = dateTimeTo.Value;
-
-            foreach (DataGridViewRow row in gridLogs.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                string timeStr = row.Cells["time"].Value?.ToString() ?? "";
-                string ip = row.Cells["ip"].Value?.ToString().ToLower() ?? "";
-                string status = row.Cells["status"].Value?.ToString().ToLower() ?? "";
-
-                bool visible = true;
-
-                //  ПОИСК
-                if (!string.IsNullOrEmpty(search))
-                {
-                    visible =
-                        timeStr.ToLower().Contains(search) ||
-                        ip.Contains(search) ||
-                        status.Contains(search);
-                }
-
-                //  ФИЛЬТР ПО СТАТУСУ
-                if (filter != "all")
-                {
-                    visible = visible && status == filter;
-                }
-
-                //  ФИЛЬТР ПО ВРЕМЕНИ
-                if (DateTime.TryParse(timeStr, out DateTime rowTime))
-                {
-                    if (rowTime < from || rowTime > to)
-                        visible = false;
-                }
-
-                //  ПРИМЕНЯЕМ В КОНЦЕ
-                row.Visible = visible;
-            }
-        }*/
-
-
-        /* void ApplyFilter()
-         {
-             LoadLogs(
-                 textBoxSearch.Text.Trim(),
-                 comboBoxFilter.Text,   
-                 dateTimeFrom.Value,
-                 dateTimeTo.Value
-             );
-         }*/
+ 
 
         void ApplyFilter()
         {

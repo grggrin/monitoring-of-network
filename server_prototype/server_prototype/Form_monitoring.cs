@@ -12,20 +12,41 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
+using System.Xml.Linq;
 
 
 namespace server_prototype
 {
     public partial class Form_monitoring : Form
     {
-        
-      
+        string GetNameByIp(string ip)
+        {
+            using (var conn = new SQLiteConnection(dbPath))
+            {
+                conn.Open();
+
+                string query = @"
+                SELECT name FROM Agents WHERE ip = @ip
+                UNION
+                SELECT name FROM Authorised WHERE ip = @ip
+                UNION
+                SELECT name FROM Ignored WHERE ip = @ip
+                LIMIT 1";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ip", ip);
+
+                    var result = cmd.ExecuteScalar();
+
+                    return result?.ToString() ?? "Unknown";
+                }
+            }
+        }
         string GetAgentUrl(string ip)
         {
             return $"http://{ip}:5050/getinfo";
         }
-
-
         string dbPath = "Data Source=server.db;";
         CancellationTokenSource _cts;
         private static HttpListener _listener; // статический, общий для всех экземпляров
@@ -36,27 +57,27 @@ namespace server_prototype
 
         public Form_monitoring()
         {
-            
-
             InitializeComponent();
             InitTables();
             InitDatabase();
             StartAgentReceiver();
             textBoxInterval.Text = "60"; // значение по умолчани
             gridAgents.CellClick += GridAgents_CellClick;
-
         }
 
         // ================= UI INIT =================
         void InitTables()
         {
+            gridDevices.Columns.Add("name", "Имя");
             gridDevices.Columns.Add("ip", "IP");
             gridDevices.Columns.Add("status", "Статус");
             gridDevices.Columns.Add("type", "Тип");
 
             gridDevices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+
             gridAgents.Columns.Add("time", "Время");
+            gridAgents.Columns.Add("name", "Имя");
             gridAgents.Columns.Add("ip", "IP");
             gridAgents.Columns.Add("log", "Log");
             gridAgents.Columns.Add("warning", "Warning");
@@ -120,69 +141,6 @@ namespace server_prototype
                 }
             });
         }
-        /* void StartAgentReceiver()
-         {
-             if (_listener != null && _listener.IsListening)
-                 return; // уже запущен
-             _listener = new HttpListener();
-             _listener.Prefixes.Add("http://+:5050/agentdata/");
-             _listener.Start();
-             Log("HTTP сервер для агентов запущен (порт 5050)");
-             Task.Run(() =>
-             {
-                 HttpListener listener = new HttpListener();
-
-                 listener.Prefixes.Add("http://+:5050/agentdata/");
-                 listener.Start();
-                 Log("HTTP сервер для агентов запущен (порт 5050)");
-
-                 while (true)
-                 {
-                     try
-                     {
-                         var ctx = listener.GetContext();
-
-                         string data = "";
-
-                         using (var reader = new StreamReader(ctx.Request.InputStream))
-                         {
-                             data = reader.ReadToEnd();
-                         }
-
-                         string ip = ctx.Request.RemoteEndPoint.Address.ToString();
-
-                         // логируем
-                         // AddAgentLog(ip, data, "");
-                         // LogAgent(ip, data, "");
-
-                         string warning = ExtractWarning(data);
-
-                         AddAgentLog(ip, data, warning);
-                         LogAgent(ip, data, warning);
-
-
-                         Log($"Данные от агента {ip}");
-
-                         ctx.Response.StatusCode = 200;
-                         ctx.Response.Close();
-                     }
-                     catch (Exception ex)
-                     {
-                         Log("Ошибка HTTP сервера: " + ex.Message);
-                     }
-                 }
-             });
-         }*/
-
-        /* string ExtractWarning(string text)
-         {
-             var lines = text.Split('\n');
-
-             var warningLine = lines
-                 .FirstOrDefault(l => l.Contains("WARNING:"));
-
-             return warningLine ?? "";
-         }*/
 
         string ExtractWarning(string text)
         {
@@ -199,11 +157,8 @@ namespace server_prototype
         private void buttonStart_Click(object sender, EventArgs e)
         {
             int interval = int.Parse(textBoxInterval.Text);
-
             _cts = new CancellationTokenSource();
-
             Task.Run(() => MonitorLoop(interval, _cts.Token));
-
             Log("Мониторинг запущен");
         }
 
@@ -284,7 +239,6 @@ namespace server_prototype
                         set.Add(reader.GetString(0));
                 }
             }
-
             return set;
         }
 
@@ -303,7 +257,6 @@ namespace server_prototype
                         list.Add(reader.GetString(0));
                 }
             }
-
             return list;
         }
 
@@ -333,14 +286,14 @@ namespace server_prototype
                 current =>
                 {
                     string ipStr = FromUInt((uint)current);
-
+                    string name = GetNameByIp(ipStr);
                     if (_ignored.Contains(ipStr)) return;
 
                     if (IsHostAlive(ipStr) && !_authorized.Contains(ipStr))
                     {
                         AddDevice(ipStr, "Online", "Unauthorized");
                         Log(" Неавторизованный: " + ipStr);
-                        LogMonitoring(ipStr, "Unauthorized");
+                        LogMonitoring(ipStr, "Unauthorized", name);
                     }
                 });
         }
@@ -353,9 +306,9 @@ namespace server_prototype
 
                 bool alive = IsHostAlive(ip);
                 string status = alive ? "Online" : "Offline";
-
+                string name = GetNameByIp(ip);
                 AddDevice(ip, status, "Authorized");
-                LogMonitoring(ip, status);
+                LogMonitoring(ip, status, name);
             }
         }
 
@@ -490,21 +443,11 @@ namespace server_prototype
                 gridDevices.Invoke(new Action<string, string, string>(AddDevice), ip, status, type);
                 return;
             }
-
-           /* int rowIndex = gridDevices.Rows.Add(ip, status, type);
-            var row = gridDevices.Rows[rowIndex];
-            
-            if (type == "Unauthorized")
-                row.DefaultCellStyle.BackColor = Color.LightCoral;
-            else if (status == "Offline")
-                row.DefaultCellStyle.BackColor = Color.LightGray;
-            else
-                row.DefaultCellStyle.BackColor = Color.LightGreen;*/
-
             if (gridDevices.Columns.Count == 0)
                 return;
 
-            int rowIndex = gridDevices.Rows.Add(ip, status, type);
+            string name = GetNameByIp(ip);
+            int rowIndex = gridDevices.Rows.Add(name, ip, status, type);
             var row = gridDevices.Rows[rowIndex];
 
             if (type == "Unauthorized")
@@ -526,8 +469,11 @@ namespace server_prototype
                 return;
             }
 
+            string name = GetNameByIp(ip);
+
             gridAgents.Rows.Add(
                 DateTime.Now.ToString("HH:mm:ss"),
+                name,
                 ip,
                 log,
                 warning);
@@ -559,26 +505,9 @@ namespace server_prototype
         }
 
         // ================= ЛОГ В БД =================
-        /* void LogMonitoring(string ip, string status)
-         {
-             using (var conn = new SQLiteConnection(dbPath))
-             {
-                 conn.Open();
+      
 
-                 using (var cmd = new SQLiteCommand(
-                     "INSERT INTO Monitoring_log VALUES (@time,@ip,@status)", conn))
-                 {
-                     cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-
-                     cmd.Parameters.AddWithValue("@ip", ip);
-                     cmd.Parameters.AddWithValue("@status", status);
-
-                     cmd.ExecuteNonQuery();
-                 }
-             }
-         }  */
-
-        void LogMonitoring(string ip, string status)
+        void LogMonitoring(string ip, string status,string name)
         {
             
                 using (var conn = new SQLiteConnection(dbPath))
@@ -586,10 +515,11 @@ namespace server_prototype
                     conn.Open();
 
                     using (var cmd = new SQLiteCommand(
-                        "INSERT INTO Monitoring_log (time, ip, status) VALUES (@time,@ip,@status)", conn))
+                        "INSERT INTO Monitoring_log (time, ip, name, status) VALUES (@time,@ip,@name,@status)", conn))
                     {
                         cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
                         cmd.Parameters.AddWithValue("@ip", ip);
+                        cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@status", status);
 
                         cmd.ExecuteNonQuery();
@@ -604,15 +534,14 @@ namespace server_prototype
             using (var conn = new SQLiteConnection(dbPath))
             {
                 conn.Open();
-
-                //using (var cmd = new SQLiteCommand(
-                 //  "INSERT INTO Agent_log VALUES (@time,@ip,@log,@warning)", conn))
+                string name = GetNameByIp(ip);
                 using (var cmd = new SQLiteCommand(
-                      "INSERT INTO Agent_log (time, ip, log, warning) VALUES (@time,@ip,@log,@warning)", conn))
+                      "INSERT INTO Agent_log (time, ip, name, log, warning) VALUES (@time,@ip,@name,@log,@warning)", conn))
                 {
                    
                     cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
                     cmd.Parameters.AddWithValue("@ip", ip);
+                    cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@log", log);
                     cmd.Parameters.AddWithValue("@warning", warning);
 
@@ -672,14 +601,14 @@ namespace server_prototype
             string textToShow = "";
             string title = "";
 
-            if (e.ColumnIndex == 2) // Log
-            {
-                textToShow = row.Cells[2].Value?.ToString();
-                title = "Полный лог";
-            }
-            else if (e.ColumnIndex == 3) // Warning
+            if (e.ColumnIndex == 3) // Log
             {
                 textToShow = row.Cells[3].Value?.ToString();
+                title = "Полный лог";
+            }
+            else if (e.ColumnIndex == 4) // Warning
+            {
+                textToShow = row.Cells[4].Value?.ToString();
                 title = "Предупреждения";
             }
             else
