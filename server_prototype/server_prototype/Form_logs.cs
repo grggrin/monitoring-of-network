@@ -28,6 +28,11 @@ namespace server_prototype
             comboBoxFilter.SelectedIndex = 0;
             comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
 
+            //костыль для загрузки логов сразу
+            dateTimeFrom.Value = DateTime.Now.AddYears(-10);
+            dateTimeTo.Value = DateTime.Now;
+
+
             LoadLogs("", "All", dateTimeFrom.Value, dateTimeTo.Value);
             gridLogs.RowPrePaint += gridLogs_RowPrePaint;
             textBoxSearch.TextChanged += textBoxSearch_TextChanged;
