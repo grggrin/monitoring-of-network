@@ -358,61 +358,6 @@ namespace SystemInfoCollector
             }
 
             return disks;
-        }
-
-       /* private static double GetNetworkUsagePercent()
-        {
-            string instanceName = GetNetworkInterfaceName();
-
-            using (PerformanceCounter sent =
-                new PerformanceCounter("Network Interface", "Bytes Sent/sec", instanceName))
-            using (PerformanceCounter received =
-                new PerformanceCounter("Network Interface", "Bytes Received/sec", instanceName))
-            {
-                sent.NextValue();
-                received.NextValue();
-
-                Thread.Sleep(1000);
-
-                float totalBytes = sent.NextValue() + received.NextValue();
-
-                double currentMbps = (totalBytes * 8) / (1024 * 1024);
-                double maxMbps = GetMaxNetworkSpeedMbps();
-
-                if (maxMbps == 0) return 0;
-
-                return Math.Round((currentMbps / maxMbps) * 100, 2);
-            }
-        }
-
-        private static double GetMaxNetworkSpeedMbps()
-        {
-            foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                if (ni.OperationalStatus == OperationalStatus.Up &&
-                    ni.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-                {
-                    return ni.Speed / 1_000_000.0;
-                }
-            }
-            return 0;
-        }
-
-        private static string GetNetworkInterfaceName()
-        {
-            var category = new PerformanceCounterCategory("Network Interface");
-            string[] instances = category.GetInstanceNames();
-
-            foreach (string name in instances)
-            {
-                if (!name.ToLower().Contains("loopback") &&
-                    !name.ToLower().Contains("isatap"))
-                {
-                    return name;
-                }
-            }
-
-            return instances.Length > 0 ? instances[0] : "";
-        }*/
+        }  
     }
 }

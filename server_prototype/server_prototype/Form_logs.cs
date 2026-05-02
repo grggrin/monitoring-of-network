@@ -23,8 +23,9 @@ namespace server_prototype
                 "All",
                 "Online",
                 "Offline",
-                "Unauthorized"
-            });
+                "Unauthorized",
+                "Silent"
+            });;
             comboBoxFilter.SelectedIndex = 0;
             comboBoxFilter.SelectedIndexChanged += comboBoxFilter_SelectedIndexChanged;
 
@@ -130,6 +131,8 @@ namespace server_prototype
                 row.DefaultCellStyle.BackColor = Color.LightGray;
             else if (status == "online")
                 row.DefaultCellStyle.BackColor = Color.LightGreen;
+            else if (status == "silent")
+                row.DefaultCellStyle.BackColor = Color.LightYellow;
         }
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
