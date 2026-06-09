@@ -197,7 +197,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_monitoring";
-            this.Text = "Form2";
+            this.Text = "Мониторинг";
             ((System.ComponentModel.ISupportInitialize)(this.gridDevices)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

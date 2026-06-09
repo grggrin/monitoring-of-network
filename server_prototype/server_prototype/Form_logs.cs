@@ -112,8 +112,6 @@ namespace server_prototype
         }
 
 
-
-
         //подсветка
         private void gridLogs_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {

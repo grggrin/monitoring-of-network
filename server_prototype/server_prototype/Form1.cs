@@ -56,7 +56,7 @@ namespace server_prototype
 
         private void button_Authorised_Click(object sender, EventArgs e)
         {
-            
+                
             Form_addAuthorised existingForm = Application.OpenForms
                 .OfType<Form_addAuthorised>()
                 .FirstOrDefault();

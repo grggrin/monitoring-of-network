@@ -14,6 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using System.Xml.Linq;
 using System.Collections.Concurrent;
+using System.Security.Cryptography;
 
 namespace server_prototype
 {
@@ -43,6 +44,76 @@ namespace server_prototype
         }
         [System.Runtime.InteropServices.DllImport("iphlpapi.dll", ExactSpelling = true)]
         private static extern int SendARP(int destIp, int srcIp, byte[] macAddr, ref int phyAddrLen);
+        /*string GetMacAddress(string ip)
+        {
+            try
+            {
+                // заставляем ОС создать ARP-запись
+                using (var ping = new Ping())
+                {
+                    ping.Send(ip, 500);
+                }
+
+                Thread.Sleep(50);
+
+                IPAddress dst = IPAddress.Parse(ip);
+
+                byte[] macAddr = new byte[6];
+                int length = macAddr.Length;
+
+                byte[] bytes = dst.GetAddressBytes();
+
+                int intAddress =
+                    (int)IPAddress.NetworkToHostOrder(
+                        BitConverter.ToInt32(bytes, 0));
+
+                int result = SendARP(intAddress, 0, macAddr, ref length);
+
+                if (result != 0)
+                    return "Unknown";
+
+                return string.Join(":",
+                    macAddr.Take(length)
+                           .Select(b => b.ToString("X2")));
+            }
+            catch
+            {
+                return "Unknown";
+            }
+        }*/
+        string GetMacAddress(string ip)
+        {
+            try
+            {
+                using (var ping = new Ping())
+                {
+                    ping.Send(ip, 1000);
+                }
+
+                IPAddress dst = IPAddress.Parse(ip);
+
+                byte[] macAddr = new byte[6];
+                int len = macAddr.Length;
+
+                int result = SendARP(
+                    BitConverter.ToInt32(dst.GetAddressBytes(), 0),
+                    0,
+                    macAddr,
+                    ref len);
+
+                if (result != 0)
+                    return "Unknown";
+
+                return string.Join("-",
+                    macAddr.Take(len)
+                           .Select(x => x.ToString("X2")));
+            }
+            catch (Exception ex)
+            {
+                Log("MAC ERROR: " + ex.Message);
+                return "Unknown";
+            }
+        }
         string GetNameByIp(string ip)
         {
             using (var conn = new SQLiteConnection(dbPath))
@@ -96,6 +167,8 @@ namespace server_prototype
         {
             gridDevices.Columns.Add("name", "Имя");
             gridDevices.Columns.Add("ip", "IP");
+            //
+            gridDevices.Columns.Add("mac", "MAC");
             gridDevices.Columns.Add("status", "Статус");
             gridDevices.Columns.Add("type", "Тип");
 
@@ -105,8 +178,8 @@ namespace server_prototype
             gridAgents.Columns.Add("time", "Время");
             gridAgents.Columns.Add("name", "Имя");
             gridAgents.Columns.Add("ip", "IP");
-            gridAgents.Columns.Add("log", "Log");
-            gridAgents.Columns.Add("warning", "Warning");
+            gridAgents.Columns.Add("log", "Лог");
+            gridAgents.Columns.Add("warning", "Предупреждение");
 
             gridAgents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -602,7 +675,50 @@ namespace server_prototype
             }
             return false;
         }
+
         void AddDevice(string ip, string status, string type)
+        {
+            if (gridDevices.InvokeRequired)
+            {
+                gridDevices.Invoke(new Action<string, string, string>(AddDevice), ip, status, type);
+                return;
+            }
+
+            if (gridDevices.Columns.Count == 0)
+                return;
+
+            if (DeviceExists(ip))
+                return;
+
+            string name = GetNameByIp(ip);
+
+            string mac = GetMacAddress(ip); // ← добавить
+
+            int rowIndex = gridDevices.Rows.Add(
+                name,
+                ip,
+                mac,
+                status,
+                type);
+
+            var row = gridDevices.Rows[rowIndex];
+
+            if (type == "Unauthorized")
+                row.DefaultCellStyle.BackColor = Color.LightCoral;
+            else if (status == "Offline")
+                row.DefaultCellStyle.BackColor = Color.LightGray;
+            else if (status == "Silent")
+                row.DefaultCellStyle.BackColor = Color.Khaki;
+            else
+                row.DefaultCellStyle.BackColor = Color.LightGreen;
+        }
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="log"></param>
+        /// <param name="warning"></param>
+        /*void AddDevice(string ip, string status, string type)
         {
             if (gridDevices.InvokeRequired)
             {
@@ -615,7 +731,7 @@ namespace server_prototype
             if (DeviceExists(ip))
                 return;
             string name = GetNameByIp(ip);
-            int rowIndex = gridDevices.Rows.Add(name, ip, status, type);
+            int rowIndex = gridDevices.Rows.Add(name, ip, mac, status, type);
             var row = gridDevices.Rows[rowIndex];
 
             if (type == "Unauthorized")
@@ -628,7 +744,7 @@ namespace server_prototype
                 row.DefaultCellStyle.BackColor = Color.LightGreen;
             if (gridDevices.Rows.Count > 0)
                 gridDevices.FirstDisplayedScrollingRowIndex = gridDevices.Rows.Count - 1;
-        }
+        }*/
 
         /*void AddAgentLog(string ip, string log, string warning)
         {
@@ -919,8 +1035,7 @@ namespace server_prototype
         {
             return $"{(ip >> 24) & 255}.{(ip >> 16) & 255}.{(ip >> 8) & 255}.{ip & 255}";
         }
-
-
+       
         private void GridAgents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;

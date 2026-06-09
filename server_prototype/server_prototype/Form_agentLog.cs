@@ -111,9 +111,18 @@ namespace server_prototype
             if (string.IsNullOrWhiteSpace(textToShow))
                 textToShow = "Нет данных";
 
-            FormLogViewer form = new FormLogViewer(textToShow);
-            form.Text = title;
+            //FormLogViewer form = new FormLogViewer(textToShow);
+            // form.Text = title;
+            // form.ShowDialog();
+            string logText = row.Cells["log"].Value?.ToString();
+
+            string warningText =
+                row.Cells["warning"].Value?.ToString();
+
+            FormLogViewer form = new FormLogViewer(logText);
+
             form.ShowDialog();
+
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
